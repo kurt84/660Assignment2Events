@@ -19,6 +19,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="400" />
         </Grid.ColumnDefinitions>
+        <Border Name="eventDetailsBorder" Grid.ColumnSpan="2" Grid.RowSpan="4" BorderThickness="2" BorderBrush="Black"></Border>
         <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="2" BorderBrush="Black">
             <TextBlock Name="eventTitle" FontSize="65" VerticalAlignment="Center">My New Event</TextBlock>
         </Border>
@@ -35,35 +36,11 @@
             <TextBlock Name="eventCategory" FontSize="30" TextAlignment="Center" VerticalAlignment="Center" Padding="10">Reminders</TextBlock>
         </Border>
         <Border Grid.Row="0" Grid.Column="2" Grid.RowSpan="4" BorderThickness="2" BorderBrush="Black">
-            <WrapPanel Name="previewList">
-                <Border BorderThickness="2" BorderBrush="Black" Height="200" Width="400">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="60"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="60"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Label HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20">My Old Event</Label>
-                        <Label HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20">9/21/18</Label>
-                        <TextBlock Grid.Row="1" FontSize="20">This is an event for someone's birthday!</TextBlock>
-                        <Label Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20">Birthdays</Label>
-                    </Grid>
-                </Border>
-                <Border BorderThickness="2" BorderBrush="Black" Height="200" Width="400">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="60"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="60"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Label HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20">My Older Event</Label>
-                        <Label HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20">2/14/18</Label>
-                        <TextBlock Grid.Row="1" FontSize="20">This is an event for another birthday!</TextBlock>
-                        <Label Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20">Birthdays</Label>
-                    </Grid>
-                </Border>
-            </WrapPanel>
+            <ScrollViewer>
+                <WrapPanel Name="previewList"></WrapPanel>
+            </ScrollViewer>
         </Border>
+            
         <Grid Grid.Row="5" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -74,7 +51,7 @@
                 <Button Margin="50,5" FontSize="25" Click="NewButtonClick">New</Button>
             </Border>
             <Border Grid.Column="1" BorderThickness="2" BorderBrush="Black">
-                <Button Margin="50,5" FontSize="25">Edit</Button>
+                <Button Margin="50,5" FontSize="25" Click="EditButtonClick">Edit</Button>
             </Border>
             <Border Grid.Column="2" BorderThickness="2" BorderBrush="Black">
                 <Button Margin="50,5" FontSize="25" Click="DeleteButtonClick">Delete</Button>
@@ -86,7 +63,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Border BorderThickness="2" BorderBrush="Black">
-                <Button Margin="20,5" FontSize="25">Print</Button>
+                <Button Margin="20,5" FontSize="25" Click="PrintButton">Print</Button>
             </Border>
             <Border Grid.Column="1" BorderThickness="2" BorderBrush="Black">
                 <ComboBox Name="filterComboBox" FontSize="25">
